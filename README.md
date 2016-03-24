@@ -20,3 +20,15 @@
 ==> box: Successfully added box 'centos65' (v0) for 'virtualbox'!
 ```
 
+4.仮想マシンを作成/起動　
+```
+# mkdir -p ~/Vagrant/CentOS65
+# cd Vagrant/CentOS65
+# vagrant up
+```
+5.仮想マシンの状態確認
+```
+# vagrant status                                                                                                
+Current machine states:
+default                   running (virtualbox)
+```
