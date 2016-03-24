@@ -1,11 +1,11 @@
 # Vagrantを使う
 
 #### 準備(CentOS6を使う)
-#### Vagrantのインストール
+#### Vagrantのダウンロード/インストール
   - https://www.vagrantup.com/downloads.html
   
   
-#### VirtualBoxのインストール  
+#### VirtualBoxのダウンロード/インストール  
   - https://www.virtualbox.org/
   
 #### Boxの追加
@@ -32,3 +32,22 @@
 Current machine states:
 default                   running (virtualbox)
 ```
+
+
+#### vagrantコマンドメモ　
+====
+|コマンド    |機能         |
+|:-----------|:------------|
+|$ vagrant up|仮想サーバーを起動|
+|$ vagrant status|仮想サーバーの状態を確認|
+|$ vagrant ssh|仮想サーバーにログイン|
+|$ vagrant halt|仮想サーバーのシャットダウン|
+|$ vagrant reload|仮想サーバーの再起動|
+|$ vagrant suspend|仮想サーバーの一時停止|
+|$ vagrant resume|仮想サーバーの再開|
+|$ vagrant destroy|仮想サーバーを削除|
+
+  
+  
+  
+  
