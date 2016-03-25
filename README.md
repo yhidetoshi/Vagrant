@@ -34,14 +34,8 @@ Current machine states:
 default                   running (virtualbox)
 ```
 
-#### 仮想マシンのIPを設定
-```
-# cd ~/Vagrant/CentOS65
-# vi Vagrantfile
- -> config.vm.network :private_network, ip: "X.X.X.X"
- を変更
-```
-
+#### box名を変更する
+- $HOME/.vagrant.d/boxesにインストールされているので`$ mv`で変更
 
 #### vagrantコマンドメモ　
 ====
