@@ -54,7 +54,7 @@ end
 ```
 #### 作ったVMにsshする
 - (not Multi環境) -> `$ vagrant ssh`
-- (Multi環境)     -> `$ vagrant ssh <vm_name>`
+- (Multi環境)     -> `$ vagrant ssh <vm_name> | <ip_address>`
 
 
 #### vagrantコマンドメモ　
