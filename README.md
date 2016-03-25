@@ -37,6 +37,22 @@ default                   running (virtualbox)
 #### box名を変更する
 - $HOME/.vagrant.d/boxesにインストールされているので`$ mv`で変更
 
+
+#### 1つのboxから複数台のVMを作成/IP設定など
+```
+Vagrant.configure(2) do |config|
+  config.vm.define :chef_client1 do |chef_client1|
+    chef_client1.vm.box = "Base-OS-Cent"
+    config.vm.network "private_network", ip: "192.168.33.10"
+  end
+  
+  config.vm.define :chef do |chef|
+    chef.vm.box = "Base-OS-Cent"
+    config.vm.network "private_network", ip: "192.168.33.11"
+  end
+end
+```
+
 #### vagrantコマンドメモ　
 ====
 |コマンド    |機能         |
