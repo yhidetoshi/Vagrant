@@ -38,7 +38,7 @@ default                   running (virtualbox)
 - $HOME/.vagrant.d/boxesにインストールされているので`$ mv`で変更
 
 
-#### 1つのboxから複数台のVMを作成/IP設定など
+#### 1つのboxから複数台のVMを作成/IP設定など(マルチ環境)
 ```
 Vagrant.configure(2) do |config|
   config.vm.define :chef_client1 do |chef_client1|
@@ -52,6 +52,10 @@ Vagrant.configure(2) do |config|
   end
 end
 ```
+#### 作ったVMにsshする
+- (not Multi環境) -> `$ vagrant ssh`
+- (Multi環境)     -> `$ vagrant ssh <vm_name>`
+
 
 #### vagrantコマンドメモ　
 ====
