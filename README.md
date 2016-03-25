@@ -24,6 +24,7 @@
 ```
 # mkdir -p ~/Vagrant/CentOS65
 # cd Vagrant/CentOS65
+# vagrant init centos65
 # vagrant up
 ```
 #### 仮想マシンの状態確認
@@ -31,6 +32,14 @@
 # vagrant status                                                                                                
 Current machine states:
 default                   running (virtualbox)
+```
+
+#### 仮想マシンのIPを設定
+```
+# cd ~/Vagrant/CentOS65
+# vi Vagrantfile
+ -> config.vm.network :private_network, ip: "X.X.X.X"
+ を変更
 ```
 
 
