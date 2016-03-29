@@ -5,11 +5,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef_client1.vm.box = "Base-OS-Cent"
     chef_client1.vm.hostname = "chef-client1"
     chef_client1.vm.network "private_network", ip: "192.168.33.10"
-
-    config.vm.provider "virtualbox" do |v1|
-	v1.cpus = 2
-	v1.memory = 1024
-    end
   end
 
 
@@ -17,11 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef_client2.vm.box = "Base-OS-Cent"
     chef_client2.vm.hostname = "chef-client2"
     chef_client2.vm.network "private_network", ip: "192.168.33.11"
-
-    config.vm.provider "virtualbox" do |v2|
-	v2.cpus = 1
-	v2.memory = 512
-    end
   end
 
  config.omnibus.chef_version = :latest
