@@ -1,17 +1,35 @@
-Vagrant.configure(2) do |config|
-  config.vm.define :chef do |chef|
-    chef.vm.box = "Base-OS-Cent"
-    config.vm.network "private_network", ip: "192.168.33.10"
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.define :chef_client do |client1|
+    client1.vm.box = "Base-OS-Cent"
+    client1.vm.hostname = "chef-client1"
+    client1.vm.network "private_network", ip: "192.168.33.10"
+
+    config.vm.provider "virtualbox" do |v1|
+	v1.cpus = 2
+	v1.memory = 1024
+    end
   end
 
-  config.vm.define :chef_client1 do |chef_client1|
-    chef_client1.vm.box = "Base-OS-Cent"
-    config.vm.network "private_network", ip: "192.168.33.11"
+
+  config.vm.define :chef_client do |client2|
+    client2.vm.box = "Base-OS-Cent"
+    client2.vm.hostname = "chef-client2"
+    client2.vm.network "private_network", ip: "192.168.33.11"
+
+    config.vm.provider "virtualbox" do |v2|
+	v2.cpus = 1
+	v2.memory = 512
+    end
   end
 
-  config.vm.define :chef_client2 do |chef_client2|
-    chef_client2.vm.box = "Base-OS-Cent"
-    config.vm.network "private_network", ip: "192.168.33.12"
-  end
+ config.omnibus.chef_version = :latest
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "./cookbooks"
 
-end
+    chef.run_list = %w[
+	recipe[httpd]
+    ]
+  end
+ end
