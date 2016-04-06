@@ -99,6 +99,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
 CoreOSとは：コンテナを稼動させることに特化したLinuxディストリビューション。そのためかなり軽量。
+
+**CoreOSの基盤**
+
+- Docker
+- etcd
+- fleet
+- Docker
+
+CoreOS ではサービスやアプリケーションは全て Docker コンテナ内で動かす
+コンテナ内で動かすことでプロセスの隔離、安全なリソース共有、アプリケーションのポータビリティを確保している
+
+- **etcd**
+ 
+複数の CoreOS ノードでクラスタを構成する際に利用する為の KVS 機能を提供する
+KVS を利用して各種ノード間で設定を共有する
+
+- **fleet**
+
+CoreOS の各ノードで稼働させるアプリケーション、サービスコンテナのスケジューリングとコンテナの管理を行う
+
+
+
 ```
 $ git clone https://github.com/coreos/coreos-vagrant/
 $ cd coreos-vagrant
@@ -123,5 +145,7 @@ $ cat /etc/os-release
 
 - cloud-configファイルの反映する場合
 ```
-sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
+$ sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
 ```
+
+
