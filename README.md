@@ -104,3 +104,24 @@ $ git clone https://github.com/coreos/coreos-vagrant/
 $ cd coreos-vagrant
 $ vagrant up
 ```
+- OSバージョンの確認
+$ cat /etc/os-release
+
+
+/usr/share/oem/
+
+- etcd/fleet/などCoreOSのコンポーネントの動作
+- 自動アップデート可否/アップデート方法
+- 起動するsystemdユニット
+- coreユーザーのssh_authorized_keyファイルに追加するSSH公開鍵
+- ホスト名
+- 「core」以外のユーザー追加
+- 指定したパスへのファイル追加
+
+- NW関連を設定
+`/etc/systemd/network`の配下に
+
+- cloud-configファイルの反映する場合
+```
+sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
+```
