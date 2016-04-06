@@ -97,6 +97,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-web.png)
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-icon.png)
 
+
+CoreOSとは：コンテナを稼動させることに特化したLinuxディストリビューション。そのためかなり軽量。
 ```
 $ git clone https://github.com/coreos/coreos-vagrant/
 $ cd coreos-vagrant
