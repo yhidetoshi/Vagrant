@@ -130,8 +130,9 @@ $ vagrant up
 $ cat /etc/os-release
 
 
-- /usr/share/oem/**cloud-config**で設定できること
+**[cloud-config]**で設定できること
 
+- Path `/usr/share/oem/`
 - etcd/fleet/などCoreOSのコンポーネントの動作
 - 自動アップデート可否/アップデート方法
 - 起動するsystemdユニット
