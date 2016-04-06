@@ -1,5 +1,7 @@
 # Vagrantを使う
 
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vagrant-icon.png)
+
 #### 準備(CentOS6を使う)
 #### Vagrantのダウンロード/インストール
   - https://www.vagrantup.com/downloads.html
