@@ -120,7 +120,7 @@ KVS を利用して各種ノード間で設定を共有する
 CoreOS の各ノードで稼働させるアプリケーション、サービスコンテナのスケジューリングとコンテナの管理を行う
 
 
-
+- **VagrantでCoreOSを使う**
 ```
 $ git clone https://github.com/coreos/coreos-vagrant/
 $ cd coreos-vagrant
@@ -130,7 +130,7 @@ $ vagrant up
 $ cat /etc/os-release
 
 
-/usr/share/oem/
+- /usr/share/oem/**cloud-config**で設定できること
 
 - etcd/fleet/などCoreOSのコンポーネントの動作
 - 自動アップデート可否/アップデート方法
