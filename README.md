@@ -2,14 +2,18 @@
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vagrant-icon.png)
 
-#### 準備(CentOS6を使う)
 #### Vagrantのダウンロード/インストール
   - https://www.vagrantup.com/downloads.html
   
   
 #### VirtualBoxのダウンロード/インストール  
   - https://www.virtualbox.org/
-  
+
+
+#### 準備(CentOS6を使う)
+
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/centos-icon.png)
+
 #### Boxの追加
 
 ```
@@ -89,6 +93,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   
 ### CoreOSを使う
+
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-icon.png)
+
 ```
 $ git clone https://github.com/coreos/coreos-vagrant/
 $ cd coreos-vagrant
