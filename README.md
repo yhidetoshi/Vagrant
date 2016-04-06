@@ -88,5 +88,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   
   
-  
-  
+### CoreOSを使う
+```
+$ git clone https://github.com/coreos/coreos-vagrant/
+$ cd coreos-vagrant
+$ vagrant up
+```
