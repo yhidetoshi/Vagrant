@@ -154,6 +154,10 @@ curl -w "\n" 'https://discovery.etcd.io/new?size=3'
 ```
 $ sudo coreos-cloudinit --from-file /usr/share/oem/cloud-config.yml
 ```
+- etcdクラスタの確認
+```
+$ systemctl status etcd
+```
 
 ### [Vagrant + etcd でクラスタを作る ]
 ```
