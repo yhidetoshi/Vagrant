@@ -146,6 +146,10 @@ $ cat /etc/os-release
 **[メモ]**
 - NW関連を設定
 `/etc/systemd/network`の配下に
+- token取得
+```
+curl -w "\n" 'https://discovery.etcd.io/new?size=3'
+```
 - cloud-configファイルの反映する場合
 ```
 $ sudo coreos-cloudinit --from-file /usr/share/oem/cloud-config.yml
