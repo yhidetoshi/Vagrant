@@ -188,5 +188,17 @@ $ user-data.sample user-data
 ```
 - vagrantを起動
 ```
-vagrant up
+$vagrant up
+-> 起動したら名前は[core-01,core-02,core-03]となる
 ```
+
+- クラスタの確認
+
+core@core-01 ~ `$ etcdctl cluster-health`
+```
+member f20806a25c32b7f is healthy: got healthy result from http://172.17.8.103:2379
+member 7bb180c680460ed7 is healthy: got healthy result from http://172.17.8.101:2379
+member f7ce9760ed075f1e is healthy: got healthy result from http://172.17.8.102:2379
+cluster is healthy
+```
+-> これでcore-1,2,3でクラスタが組めていることが確認できた
