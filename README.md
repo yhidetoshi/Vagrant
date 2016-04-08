@@ -151,7 +151,7 @@ $ cat /etc/os-release
 $ sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
 ```
 
-### [Vagrantでクラスタを作る]
+### [Vagrant + etcd でクラスタを作る ]
 ```
 $ git clone https://github.com/coreos/coreos-vagrant.git
 $ mv config.rb.sample config.rb
