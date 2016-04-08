@@ -148,7 +148,7 @@ $ cat /etc/os-release
 `/etc/systemd/network`の配下に
 - cloud-configファイルの反映する場合
 ```
-$ sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
+$ sudo coreos-cloudinit --from-file /usr/share/oem/cloud-config.yml
 ```
 
 ### [Vagrant + etcd でクラスタを作る ]
@@ -201,4 +201,4 @@ member 7bb180c680460ed7 is healthy: got healthy result from http://172.17.8.101:
 member f7ce9760ed075f1e is healthy: got healthy result from http://172.17.8.102:2379
 cluster is healthy
 ```
--> これでcore-1,2,3でクラスタが組めていることが確認できた
+-> これでcore-01,02,03でクラスタが組めていることが確認できた
