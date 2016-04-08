@@ -131,7 +131,7 @@ $ cat /etc/os-release
 
 
 **[cloud-config]**で設定できること
-
+===
 - Path `/usr/share/oem/`
 - etcd/fleet/などCoreOSのコンポーネントの動作
 - 自動アップデート可否/アップデート方法
@@ -141,9 +141,11 @@ $ cat /etc/os-release
 - 「core」以外のユーザー追加
 - 指定したパスへのファイル追加
 
+===
+
+**[メモ]**
 - NW関連を設定
 `/etc/systemd/network`の配下に
-
 - cloud-configファイルの反映する場合
 ```
 $ sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
