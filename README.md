@@ -130,7 +130,7 @@ $ vagrant up
 $ cat /etc/os-release
 
 
-**[cloud-config]**で設定できること
+#### **[cloud-config]**で設定できること
 ===
 - Path `/usr/share/oem/`
 - etcd/fleet/などCoreOSのコンポーネントの動作
@@ -151,4 +151,42 @@ $ cat /etc/os-release
 $ sudo coreos-cloudinit --from-file /usr/share/oen/cloud-config
 ```
 
+### [Vagrantでクラスタを作る]
+```
+$ git clone https://github.com/coreos/coreos-vagrant.git
+$ mv config.rb.sample config.rb
+$ user-data.sample user-data
+```
 
+- Vagrantfileを書き換える(12行目と19行目　*今回は3VM)
+```
+  1 # -*- mode: ruby -*-
+  2 # # vi: set ft=ruby :
+  3
+  4 require 'fileutils'
+  5
+  6 Vagrant.require_version ">= 1.6.0"
+  7
+  8 CLOUD_CONFIG_PATH = File.join(File.dirname(__FILE__), "user-data")
+  9 CONFIG = File.join(File.dirname(__FILE__), "config.rb")
+ 10
+ 11 # Defaults for config options defined in CONFIG
+ 12 $num_instances = 3
+ 13 $instance_name_prefix = "core"
+ 14 $update_channel = "alpha"
+ 15 $image_version = "current"
+ 16 $enable_serial_logging = false
+ 17 $share_home = false
+ 18 $vm_gui = false
+ 19 $vm_memory = 512
+```
+
+- config.rbを書き換える (2行目 *今回は3VM)
+```
+ 1 # Size of the CoreOS cluster created by Vagrant
+ 2 $num_instances=3
+```
+- vagrantを起動
+```
+vagrant up
+```
