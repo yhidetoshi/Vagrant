@@ -1,9 +1,13 @@
 VAGRANTFILE_API_VERSION = "2"
+
+$update_channel = "alpha"
+$image_version = "current"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :core1 do |core1|
     core1.vm.box = "coreos-alpha"
-    core1.vm.hostname = "core1"
+    core1.vm.hostname = "core-01"
     core1.vm.network "private_network", ip: "172.17.8.101"
   end
 
@@ -16,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :core3 do |core3|
     core3.vm.box = "coreos-alpha"
     core3.vm.hostname = "core-03"
-    core3.vm.network "private_network", ip: "172.17.8.101"
+    core3.vm.network "private_network", ip: "172.17.8.103"
   end
 
  end
