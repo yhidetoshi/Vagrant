@@ -1,0 +1,49 @@
+#cloud-config
+
+hostname: "core-01"
+coreos:
+  etcd2:
+    name: "core-01"
+    advertise-client-urls: "http://172.17.8.101:2379"
+    listen-client-urls: "http://0.0.0.0:2379"
+    listen-peer-urls: "http://172.17.8.101:2380"
+    initial-advertise-peer-urls: "http://172.17.8.101:2380"
+    initial-cluster-token: "cluster001"
+    initial-cluster: "core-01=http://172.17.8.101:2380,core-02=http://172.17.8.102:2380,core-03=http://172.17.8.103:2380"
+    initial-cluster-state: "new"
+  units:
+    - name: etcd2.service
+      command: start
+    - name: fleet.service
+      command: start
+    - name: docker-tcp.socket
+      command: start
+      enable: true
+      content: |
+        [Unit]
+        Description=Docker Socket for the API
+
+        [Socket]
+        ListenStream=2375
+        Service=docker.service
+        BindIPv6Only=both
+
+        [Install]
+        WantedBy=sockets.target
+    - name: settimezone.service
+      command: start
+      content: |
+        [Unit]
+        Description=Set the timezone
+
+        [Service]
+        ExecStart=/usr/bin/timedatectl set-timezone Asia/Tokyo
+        RemainAfterExit=yes
+        Type=oneshot
+users:
+  -
+    name: core
+    passwd: $1$yJD1StP1$FARPTOwBF3XR0O7VtOvxj/
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3Nza.......
