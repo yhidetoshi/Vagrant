@@ -219,6 +219,23 @@ cluster is healthy
 cd /etc/systemd/system
 sudo vim hello.service
 ```
+hello.serviceの中身
+```
+[Unit]
+Description=My Service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill hello
+ExecStartPre=-/usr/bin/docker rm hello
+ExecStartPre=/usr/bin/docker pull busybox
+ExecStart=/usr/bin/docker run --name hello busybox /bin/sh -c "while true; do echo Hello World; sleep 1; done"
+ExecStop=/usr/bin/docker stop hello
+```
+
+
+
 - サービスを登録する (fleetがメモリ上に取り込む)
 ```
 fleetctl submit hello.service
