@@ -212,6 +212,8 @@ cluster is healthy
 -> これでcore-01,02,03でクラスタが組めていることが確認できた
 
 ### fleetctlによるサービスの管理
+hoge.serviceファイルを作成して、その作成いた処理から(CoreOS上に)コンテナを起動しサービスを管理する
+
 (例) helloを作成する
 
 - serviceファイルを作成する
