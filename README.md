@@ -238,37 +238,91 @@ ExecStop=/usr/bin/docker stop hello
 
 - サービスを登録する (fleetがメモリ上に取り込む)
 ```
-fleetctl submit hello.service
+$ fleetctl submit hello.service
+
+Unit hello.service inactive
 ```
+
 - fleetが読み込んだ一覧を確認
 ```
-fleetctl list-unit-files
+$ fleetctl list-unit-files
+
+UNIT		HASH	DSTATE		STATE		TARGET
+hello.service	0d1c468	inactive	inactive	-
 ```
+
 - 読み込んだファイルを確認
 ```
-fleetctl cat hello
+$ fleetctl cat hello
 ```
+
 - サービスをスケジューリングする．(スケジューリング:fleetエンジンがクラスタ内でサービスを実行するのに最も適したマシンを選択すること)
 ```
-fleetctl load hello.service
+$ fleetctl load hello.service
+
+Unit hello.service loaded on 39d7812b.../10.0.2.15
 ```
+
+- サービスを開始する
+```
+$ fleetctl start hello
+
+Unit hello.service launched on 39d7812b.../10.0.2.15
+```
+
 - 実行中、スケジューリングされたサービス一覧を見る
 ```
-fleetctl list-units
+$ fleetctl list-units
+
+UNIT		MACHINE			ACTIVE	SUB
+hello.service	39d7812b.../10.0.2.15	active	running
 ```
 - サービスの詳細の状態を知る
 ```
-fleetctl status hello
+$ fleetctl status hello
+
+● hello.service - My Service
+   Loaded: loaded (/etc/systemd/system/hello.service; linked-runtime; vendor preset: disabled)
+   Active: active (running) since Sun 2016-04-10 08:14:38 JST; 22s ago
+  Process: 1093 ExecStartPre=/usr/bin/docker pull busybox (code=exited, status=0/SUCCESS)
+ Main PID: 1112 (docker)
+   Memory: 11.7M
+      CPU: 130ms
+   CGroup: /system.slice/hello.service
+           └─1112 /usr/bin/docker run --name hello busybox /bin/sh -c while true; do echo Hello World; sleep 1; done
+
+Apr 10 08:14:51 core-01 docker[1112]: Hello World
+Apr 10 08:14:52 core-01 docker[1112]: Hello World
+Apr 10 08:14:53 core-01 docker[1112]: Hello World
 ```
+- dockerを確認(busyboxが作成され,コンテナが新たに作成されている)
+```
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             latest              47bcc53f74dc        3 weeks ago         1.113 MB
+core@core-01 /etc/systemd/system $ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                        PORTS               NAMES
+2e9cc5008d62        busybox             "/bin/sh -c 'while tr"   15 minutes ago      Exited (137) 13 minutes ago                       hello
+```
+
+- スケジューリングされたマシンにログインできる
+```
+fleetctl ssh hello
+```
+
 - サービスの停止
 ```
-fleetctl stop hello
+$ fleetctl stop hello
 ```
 - サービスの読み込みをやめる
 ```
-fleetctl unload hello
+$ fleetctl unload hello
+
+Unit hello.service loaded on 39d7812b.../10.0.2.15
 ```
 - サービスを削除する
 ```
-fleetctl destroy hello
+$ fleetctl destroy hello
+
+Destroyed hello.service
 ```
