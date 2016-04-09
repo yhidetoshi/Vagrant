@@ -159,7 +159,7 @@ $ sudo coreos-cloudinit --from-file /usr/share/oem/cloud-config.yml
 $ systemctl status etcd
 ```
 
-### [Vagrant + etcd でクラスタを作る ]
+### [Vagrant + etcd でクラスタを作る(Vagrantfileによる自動構築) ]
 ```
 $ git clone https://github.com/coreos/coreos-vagrant.git
 $ mv config.rb.sample config.rb
@@ -210,3 +210,65 @@ member f7ce9760ed075f1e is healthy: got healthy result from http://172.17.8.102:
 cluster is healthy
 ```
 -> これでcore-01,02,03でクラスタが組めていることが確認できた
+
+
+### [Vagrant + etcd2 でクラスタを作る(Vagrantで箱を作り、cloud-configは手動) ]
+Vagrant3台を用意(core-01,core02,core03)
+-> Vagrantfileで作成
+```
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.define :core1 do |core1|
+    core1.vm.box = "coreos-alpha"
+    core1.vm.hostname = "core-01"
+    core1.vm.network "private_network", ip: "172.17.8.101"
+  end
+
+  config.vm.define :core2 do |core2|
+    core2.vm.box = "coreos-alpha"
+    core2.vm.hostname = "core-02"
+    core2.vm.network "private_network", ip: "172.17.8.102"
+  end
+
+  config.vm.define :core3 do |core3|
+    core3.vm.box = "coreos-alpha"
+    core3.vm.hostname = "core-03"
+    core3.vm.network "private_network", ip: "172.17.8.103"
+  end
+
+ end
+```
+|hostname    |IPアドレス   |
+|:-----------|:------------|
+|core-01|172.17.8.101|
+|core-02|172.17.8.102|
+|core-03|172.17.8.103|
+
+- 3台のcloud-configは以下に配置
+
+`https://github.com/yhidetoshi/Vagrant/tree/master/coreos-vagrant/cloud-config-cluster`
+
+- cloud-configを書き換える
+```
+$ sudo vi /usr/share/oem/cloud-config.yml
+```
+
+- ymlファイルに問題がないか確認する
+```
+$ sudo coreos-cloudinit --from-file /usr/share/oem/cloud-config.yml
+```
+
+- 問題が無ければ再起動
+```
+$ sudo reboot
+```
+- クラスタの確認
+```
+ $ etcdctl cluster-health
+
+member 3c9db69d7349bc1d is healthy: got healthy result from http://172.17.8.103:2379
+member 8fe60b3a8c0f2724 is healthy: got healthy result from http://172.17.8.101:2379
+member eb0bc02e1f6ccc95 is healthy: got healthy result from http://172.17.8.102:2379
+cluster is healthy
+```
