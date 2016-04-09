@@ -245,6 +245,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 |core-02|172.17.8.102|
 |core-03|172.17.8.103|
 
+- cloud-configのフラグ説明
+(参考:http://qiita.com/coreos/items/2e4ca397031d368832c4) 引用させて頂きました.
+```
+- name: 各メンバを識別するための固有の任意名を付けます。ここで付けた名前がinitial-clusterフラグで使用されます。
+例: name: "member001"
+
+- listen-client-url: etcdの基本的な通信において、受け付けるクライアントからのトラフィックを指定します。
+メンバのインターナルIPとループバックアドレスをURL形式で指定します。
+0.0.0.0を指定することで、すべてのインターフェースにおける指定したportを開けることができるます。これを使ってインターナルIPとループバックアドレスの両方を指定することを省略することができます。
+例: listen-client-url: "http://0.0.0.0:2379" 
+または、listen-client-url: "http://192.168.0.11:2379,http://127.0.0.1:2379"
+
+- advertise-client-urls: etcdの基本的な通信において、ほかのメンバに公開するURLを指定します。
+メンバのインターナルIPを指定します。
+例: advertise-client-urls: "http://192.168.0.11:2379"
+
+- listen-peer-urls: クラスタの通信において、受け付けるURLを指定します。
+メンバのインターナルIPを指定します。peerはクラスタに関する通信なのでポートは2380番です。
+例: listen-peer-urls: "http://192.168.0.11:2380"
+
+- initial-advertise-peer-urls: クラスタの通信において、ほかのメンバに公開するURLを指定します。
+メンバのインターナルIPを指定します。
+例: initial-advertise-peer-urls: "http://192.168.0.11:2380"
+
+- initial-cluster: クラスタを組む各メンバのURLをメンバ名=URLの形式で指定します。ここで指定するURLは、initial-advertise-peer-urlsフラグで指定したURLとイコールとなります。
+静的にクラスタを組む時にのみ必要となるフラグです。
+例: initial-cluster: "member001=192.168.0.11:2380,member002=192.168.0.12,member003=192.168.0.13"
+
+- initial-cluster-token: クラスタを識別するためのトークンです。1つのクラスタ内の各メンバに対して同じトークンを設定します。トークンは任意の文字列です。
+静的にクラスタを組む時にのみ必要となるフラグです。
+例: initial-cluster-token: "cluster001"
+
+- initial-cluster-state: newとexistingを指定でき、newはクラスタを新規に作成する場合に指定します。existingは、既存のクラスタにメンバを追加する場合に使用します。
+例: initial-cluster-state: "new"
+```
+
+
 - 3台のcloud-configは以下に配置
 
 `https://github.com/yhidetoshi/Vagrant/tree/master/coreos-vagrant/cloud-config-cluster`
