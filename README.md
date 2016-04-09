@@ -210,3 +210,48 @@ member f7ce9760ed075f1e is healthy: got healthy result from http://172.17.8.102:
 cluster is healthy
 ```
 -> これでcore-01,02,03でクラスタが組めていることが確認できた
+
+### fleetctlによるサービスの管理
+(例) helloを作成する
+
+- serviceファイルを作成する
+```
+cd /etc/systemd/system
+sudo vim hello.service
+```
+- サービスを登録する (fleetがメモリ上に取り込む)
+```
+fleetctl submit hello.service
+```
+- fleetが読み込んだ一覧を確認
+```
+fleetctl list-unit-files
+```
+- 読み込んだファイルを確認
+```
+fleetctl cat hello
+```
+- サービスをスケジューリングする．(スケジューリング:fleetエンジンがクラスタ内でサービスを実行するのに最も適したマシンを選択すること)
+```
+fleetctl load hello.service
+```
+- 実行中、スケジューリングされたサービス一覧を見る
+```
+fleetctl list-units
+```
+- サービスの詳細の状態を知る
+```
+fleetctl status hello
+```
+- サービスの停止
+```
+fleetctl stop hello
+```
+- サービスの読み込みをやめる
+```
+fleetctl unload hello
+```
+- サービスを削除する
+```
+fleetctl destroy hello
+```
