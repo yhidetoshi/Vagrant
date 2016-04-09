@@ -309,11 +309,3 @@ member 8fe60b3a8c0f2724 is healthy: got healthy result from http://172.17.8.101:
 member eb0bc02e1f6ccc95 is healthy: got healthy result from http://172.17.8.102:2379
 cluster is healthy
 ```
-```
-$ fleetctl list-machines
-
-MACHINE		IP		METADATA
-7d042cd7...	10.0.2.15	-
-9d158de7...	10.0.2.15	-
-e26a11d6...	10.0.2.15	-
-```
