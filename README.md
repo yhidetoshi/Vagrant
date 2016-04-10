@@ -366,6 +366,14 @@ example docker contena nginx server
 - core02でhelloを出力するサービスをfleetctlで登録して開始
 - 動作しているVagrantVMを停止 -> 異なるVMで動作していることを確認する 
 
+**(クラスタの状態)**
+```
+core@core-01 ~ $ etcdctl cluster-health
+member 3c9db69d7349bc1d is healthy: got healthy result from http://172.17.8.103:2379
+member 8fe60b3a8c0f2724 is healthy: got healthy result from http://172.17.8.101:2379
+member eb0bc02e1f6ccc95 is healthy: got healthy result from http://172.17.8.102:2379
+```
+
 **(結果)**
 ```
 fleetctl status hello
