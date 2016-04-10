@@ -329,7 +329,7 @@ $ fleetctl destroy hello
 Destroyed hello.service
 ```
 
-既存に(DOckerHubで)作ったNginxのも同様に設定した。
+**既存に(DOckerHubで)作ったNginxのも同様に設定した**
 ```
 [Unit]
 Description=My Service
