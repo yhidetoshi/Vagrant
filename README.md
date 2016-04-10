@@ -328,3 +328,25 @@ $ fleetctl destroy hello
 
 Destroyed hello.service
 ```
+
+既存に(DOckerHubで)作ったNginxのも同様に設定した。
+```
+[Unit]
+Description=My Service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill testservice
+ExecStartPre=-/usr/bin/docker rm testservice
+ExecStartPre=/usr/bin/docker pull -a hyajima/coreos-test
+ExecStart=/usr/bin/docker run --name testservice -d -p 49100:80 -i -t hyajima/coreos-test
+ExecStop=/usr/bin/docker stop testservice
+```
+
+- 起動に失敗する...手動でコマンドを実行するときちんと動作するのだが...
+```
+$ fleetctl list-units
+UNIT			MACHINE			ACTIVE		SUB
+nginxtest.service	39d7812b.../10.0.2.15	inactive	dead
+```
