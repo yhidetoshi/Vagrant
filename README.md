@@ -340,15 +340,8 @@ TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill testservice
 ExecStartPre=-/usr/bin/docker rm testservice
 ExecStartPre=/usr/bin/docker pull -a hyajima/coreos-test
-ExecStart=/usr/bin/docker run --name testservice -d -p 49100:80 -i -t hyajima/coreos-test
+ExecStart=/usr/bin/docker run --name testservice -p 49100:80 hyajima/coreos-test /bin/sh
 ExecStop=/usr/bin/docker stop testservice
-```
-
-- 起動に失敗する...手動でコマンドを実行するときちんと動作するのだが...
-```
-$ fleetctl list-units
-UNIT			MACHINE			ACTIVE		SUB
-nginxtest.service	39d7812b.../10.0.2.15	inactive	dead
 ```
 
 CoreOSの起動時にコンテナを起動させるには`cloud-config`に記述する
@@ -357,4 +350,12 @@ CoreOSの起動時にコンテナを起動させるには`cloud-config`に記述
   command: start
 ```
 
+- 確認
+```
+$ docker ps
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS              PORTS                   NAMES
+8f966b5d32fc        hyajima/coreos-test   "/bin/sh -c '/usr/sbi"   About a minute ago   Up About a minute   0.0.0.0:49100->80/tcp   testservice
 
+$ curl localhost:49100
+example docker contena nginx server
+```
