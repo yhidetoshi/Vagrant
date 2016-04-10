@@ -350,3 +350,11 @@ $ fleetctl list-units
 UNIT			MACHINE			ACTIVE		SUB
 nginxtest.service	39d7812b.../10.0.2.15	inactive	dead
 ```
+
+CoreOSの起動時にコンテナを起動させるには`cloud-config`に記述する
+```
+- name: nginxtest.service
+  command: start
+```
+
+
