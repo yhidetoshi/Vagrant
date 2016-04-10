@@ -359,3 +359,48 @@ CONTAINER ID        IMAGE                 COMMAND                  CREATED      
 $ curl localhost:49100
 example docker contena nginx server
 ```
+
+
+#### Vagrant3台 + クラスタ + フェイルオーバーを試す
+- core01/core02/core03で1つのクラスタを構築
+- core02でhelloを出力するサービスをfleetctlで登録して開始
+- 動作しているVagrantVMを停止 -> 異なるVMで動作していることを確認する 
+
+**(結果)**
+```
+fleetctl status hello
+● hello.service - My Service
+   Loaded: loaded (/run/fleet/units/hello.service; linked-runtime; vendor preset: disabled)
+   Active: active (running) since Mon 2016-04-11 08:26:54 JST; 1min 5s ago
+  Process: 965 ExecStartPre=/usr/bin/docker pull busybox (code=exited, status=0/SUCCESS)
+  Process: 956 ExecStartPre=/usr/bin/docker rm hello (code=exited, status=1/FAILURE)
+  Process: 857 ExecStartPre=/usr/bin/docker kill hello (code=exited, status=1/FAILURE)
+ Main PID: 985 (docker)
+   Memory: 30.7M
+      CPU: 217ms
+   CGroup: /system.slice/hello.service
+           └─985 /usr/bin/docker run --name hello busybox /bin/sh -c while true; do echo Hello World; sleep 1; done
+
+Apr 11 08:27:50 core-01 docker[985]: Hello World
+Apr 11 08:27:51 core-01 docker[985]: Hello World
+Apr 11 08:27:52 core-01 docker[985]: Hello World
+
+
+$ fleetctl status hello
+● hello.service - My Service
+   Loaded: loaded (/run/fleet/units/hello.service; linked-runtime; vendor preset: disabled)
+   Active: active (running) since Mon 2016-04-11 08:33:56 JST; 2min 3s ago
+  Process: 980 ExecStartPre=/usr/bin/docker pull busybox (code=exited, status=0/SUCCESS)
+  Process: 971 ExecStartPre=/usr/bin/docker rm hello (code=exited, status=1/FAILURE)
+  Process: 872 ExecStartPre=/usr/bin/docker kill hello (code=exited, status=1/FAILURE)
+ Main PID: 999 (docker)
+   Memory: 31.3M
+      CPU: 276ms
+   CGroup: /system.slice/hello.service
+           └─999 /usr/bin/docker run --name hello busybox /bin/sh -c while true; do echo Hello World; sleep 1; done
+
+Apr 11 08:35:50 core-03 docker[999]: Hello World
+Apr 11 08:35:51 core-03 docker[999]: Hello World
+Apr 11 08:35:52 core-03 docker[999]: Hello World
+```
+-> core-01からcore-03にサービスが移動して動作していることが確認できた
