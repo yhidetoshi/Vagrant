@@ -160,6 +160,8 @@ $ systemctl status etcd
 ```
 
 ### [Vagrant + etcd でクラスタを作る ]
+
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/etcd2-image.png)
 ```
 $ git clone https://github.com/coreos/coreos-vagrant.git
 $ mv config.rb.sample config.rb
