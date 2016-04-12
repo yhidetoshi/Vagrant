@@ -15,7 +15,6 @@
 
 <a id="anchor1"></a>
 #### <a href="#anchor1">Vagrantを使う準備</a>
-#### Vagrantを使う準備
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vagrant-icon.png)
 
@@ -30,7 +29,6 @@
 
 <a id="anchor2"></a>
 #### <a href="#anchor2">[Vagrantを使って見る]</a>
-#### [Vagrantを使って見る]
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/centos-icon.png)
 #### Boxの追加
 ```
@@ -111,7 +109,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
 <a id="anchor3"></a>
 #### <a href="#anchor3">CoreOSを使う</a>
-#### CoreOSを使う
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-web.png)
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-icon.png)
