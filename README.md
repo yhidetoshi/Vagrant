@@ -2,8 +2,15 @@
 ## <a href="#index">目次</a>
 * [目次](#index)
 * [Vagrantを使う準備](#anchor1)
-- [Vagrantを使って見る](#anchor2)
-  - [Vagrantを使って見る](#anchor3)
+* [Vagrantを使う](#anchor2)
+  - box追加/VM作成・操作/box名変更
+  - Vagrantfileでマルチ環境
+* [CoreOSを使う](#anchor3)
+  - VagrantfileでCoreOSを作成
+  - Vagrant + etcd でクラスタを作る
+  - fleetctlによるサービスの管理
+  - Vagrant3台 + クラスタ + フェイルオーバーを試す
+
 
 
 <a id="anchor1"></a>
@@ -21,8 +28,8 @@
 
 
 
-<a id="anchor1"></a>
-#### <a href="#anchor1">[Vagrantを使って見る]</a>
+<a id="anchor2"></a>
+#### <a href="#anchor2">[Vagrantを使って見る]</a>
 #### [Vagrantを使って見る]
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/centos-icon.png)
 #### Boxの追加
