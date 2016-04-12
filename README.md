@@ -2,8 +2,8 @@
 ## <a href="#index">目次</a>
 * [目次](#index)
 * [Vagrantを使う準備](#anchor1)
-* [Vagrantを使って見る](#anchor2)
-* [Vagrantを使って見る](#anchor3)
+- [Vagrantを使って見る](#anchor2)
+  - [Vagrantを使って見る](#anchor3)
 
 
 <a id="anchor1"></a>
