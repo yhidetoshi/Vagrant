@@ -1,12 +1,13 @@
 <a id="index"></a>
 ## <a href="#index">目次</a>
-* [目次](#index)
 * [Vagrantを使う準備](#anchor1)
 * [Vagrantを使う](#anchor2)
   - box追加/VM作成・操作/box名変更
-  - Vagrantfileでマルチ環境
+  - Vagrantfileでマルチ環境を作成
 * [CoreOSを使う](#anchor3)
+  - CoreOSについて
   - VagrantfileでCoreOSを作成
+  - cloud-configで設定反映
   - Vagrant + etcd でクラスタを作る
   - fleetctlによるサービスの管理
   - Vagrant3台 + クラスタ + フェイルオーバーを試す
