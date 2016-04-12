@@ -1,4 +1,14 @@
-# Vagrantを使う
+<a id="index"></a>
+## <a href="#index">目次</a>
+* [目次](#index)
+* [Vagrantを使う準備](#anchor1)
+* [Vagrantを使って見る](#anchor2)
+* [Vagrantを使って見る](#anchor3)
+
+
+<a id="anchor1"></a>
+#### <a href="#anchor1">Vagrantを使う準備</a>
+#### Vagrantを使う準備
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vagrant-icon.png)
 
@@ -10,12 +20,12 @@
   - https://www.virtualbox.org/
 
 
-#### 準備(CentOS6を使う)
 
+<a id="anchor1"></a>
+#### <a href="#anchor1">[Vagrantを使って見る]</a>
+#### [Vagrantを使って見る]
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/centos-icon.png)
-
 #### Boxの追加
-
 ```
 # vagrant box add centos65 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 
