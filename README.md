@@ -109,7 +109,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   
   
-### CoreOSを使う
+<a id="anchor3"></a>
+#### <a href="#anchor3">CoreOSを使う</a>
+#### CoreOSを使う
 
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-web.png)
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/coreos-icon.png)
