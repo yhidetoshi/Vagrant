@@ -4,6 +4,8 @@
 * [Vagrantを使う](#anchor2)
   - box追加/VM作成・操作/box名変更
   - Vagrantfileでマルチ環境を作成
+    - VM複数作成
+    - Chefによるプロビジョニング
 * [CoreOSを使う](#anchor3)
   - CoreOSについて
   - VagrantfileでCoreOSを作成
@@ -61,7 +63,10 @@ default                   running (virtualbox)
 - $HOME/.vagrant.d/boxesにインストールされているので`$ mv`で変更
 
 
-#### 1つのboxから複数台のVMを作成/IP設定など(マルチ環境)
+#### 1つのboxから複数台のVMを作成/IP設定/Chef適用(マルチ環境)
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vagrant-chef-icon.jpeg)
+
+(この例はvagrant起動時にhttpdのレシピを適用)
 ```
 VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
