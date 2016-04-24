@@ -441,9 +441,13 @@ Apr 11 08:35:52 core-03 docker[999]: Hello World
 ### Vyattaを使う
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vyatta-icon.png)
 
-vyattaをvagrantで使う準備
+**vyattaをvagrantで使う準備**
 ```
 $ vagrant plugin install vagrant-vyos
 $ vagrant init higebu/vyos-1.1.7-amd64
 $ vagrant up
 ```
+- **[複数台のvyattaを構築する/使い方など]**
+
+-> Vagrantfileなど、使い方メモ
+https://github.com/yhidetoshi/Vyatta/tree/master
