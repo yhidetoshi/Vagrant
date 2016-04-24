@@ -437,3 +437,6 @@ Apr 11 08:35:51 core-03 docker[999]: Hello World
 Apr 11 08:35:52 core-03 docker[999]: Hello World
 ```
 -> core-01からcore-03にサービスが移動して動作していることが確認できた
+
+### Vyattaを使う
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vyatta-icon.png)
