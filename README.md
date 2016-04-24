@@ -13,7 +13,7 @@
   - Vagrant + etcd でクラスタを作る
   - fleetctlによるサービスの管理
   - Vagrant3台 + クラスタ + フェイルオーバーを試す
-
+* [Vyattaを使う](#anchor4)
 ====
 
 
@@ -438,7 +438,8 @@ Apr 11 08:35:52 core-03 docker[999]: Hello World
 ```
 -> core-01からcore-03にサービスが移動して動作していることが確認できた
 
-### Vyattaを使う
+<a id="anchor4"></a>
+#### <a href="#anchor4">Vyattaを使う</a>
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/Vagrant/vyatta-icon.png)
 
 **vyattaをvagrantで使う準備**
