@@ -14,6 +14,7 @@
   - fleetctlによるサービスの管理
   - Vagrant3台 + クラスタ + フェイルオーバーを試す
 * [Vyattaを使う](#anchor4)
+
 ====
 
 
