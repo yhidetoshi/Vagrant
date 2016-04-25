@@ -6,6 +6,9 @@
   - Vagrantfileでマルチ環境を作成
     - VM複数作成
     - Chefによるプロビジョニング
+    - 作成したVMにsshする
+    - 複数NICにする
+    - vagrantコマンドメモ
 * [CoreOSを使う](#anchor3)
   - CoreOSについて
   - VagrantfileでCoreOSを作成
@@ -99,6 +102,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 - (not Multi環境) -> `$ vagrant ssh`
 - (Multi環境)     -> `$ vagrant ssh <vm_name> | <ip_address>`
 
+#### 複数NICでVMを作る場合:-> 書きのように追加すれば良い
+```
+chef_client1.vm.network "private_network", ip: "192.168.3.10"
+chef_client1.vm.network "private_network", ip: "192.168.33.10"
+```
 
 #### vagrantコマンドメモ　
 ====
