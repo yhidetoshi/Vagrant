@@ -461,3 +461,27 @@ $ vagrant up
 
 -> Vagrantfileなど、使い方メモ
 https://github.com/yhidetoshi/Vyatta/tree/master
+
+
+#### CentOS6にVagrantを導入する
+```
+# yum -y install dkms
+# yum -y install perl
+# cd /etc/yum.repos.d/
+# wget http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+
+virtualbox.repoが追加されていたらOKです。
+VirtualBoxがインストール可能になったかどうかを確認
+# yum list | grep VirtualBox
+VirtualBox-3.2.x86_64 3.2.28_100435_el6-1 virtualbox
+VirtualBox-4.0.x86_64 4.0.32_101617_el6-1 virtualbox
+VirtualBox-4.1.x86_64 4.1.40_101594_el6-1 virtualbox
+VirtualBox-4.2.x86_64 4.2.32_101581_el6-1 virtualbox
+VirtualBox-4.3.x86_64 4.3.30_101610_el6-1 virtualbox
+VirtualBox-5.0.x86_64 5.0.0_101573_el6-1 virtualbox
+※　インストールするOSのカーネルバージョンでVirtualBoxのバージョンを変える
+
+# yum -y install VirtualBox-4.3
+# # rpm -Uvh http://files.vagrantup.com/packages/a40522f5fabccb9ddabad03d836e120ff5d14093/vagrant_1.3.5_x86_64.rpm
+# vagrant init centos
+```
